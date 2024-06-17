@@ -12,9 +12,16 @@ import retrofit2.http.Query;
 
 public interface APIRest {
 
-    String URL_PHP = "API_REST.php";
+    String URL_PHP = "alimentos/";
+
+    String URL_ORDENES = "ordenes/";
+
+    String URL_ORDENES_DETALLES = "ordenes_detalles/";
+
+    String URL_ULTIMA_ORDEN = "ultimaorden/";
+
     @GET(URL_PHP)
-    Call<List<Comida>> obtenerComida();
+    Call<List<Comida>> obtenerComidas();
     @GET(URL_PHP)
     Call<Comida> obtenerComida(
             @Query("idComida") String idComida
@@ -35,31 +42,55 @@ public interface APIRest {
             @Query("idComida") String idComida
     );
 
-    @GET(URL_PHP)
+    @GET(URL_ORDENES)
     Call<Orden> obtenerOrden(
-            @Query("idCliente") String idCliente
+            @Query("idOrden") String idOrden
     );
 
-    @POST(URL_PHP)
+    @POST(URL_ORDENES)
     Call<Void> agregarOrden(
             @Body Orden orden
     );
 
-    @PUT(URL_PHP)
+    @PUT(URL_ORDENES)
     Call<Void> editarOrden(
             @Body Orden orden
     );
 
-    @DELETE(URL_PHP)
+    @DELETE(URL_ORDENES)
     Call<Void> eliminarOrden(
             @Query("idOrden") String idOrden
     );
 
-    @GET(URL_PHP)
+    @GET(URL_ORDENES)
     Call<List<Usuario>> obtenerUsuarios();
 
-    @GET(URL_PHP)
+    @GET(URL_ORDENES)
     Call<Usuario> obtenerUsuario(
-            @Query("idUsuario") String idUsuario
+            @Query("idOrden") String idOrden
     );
+
+    @GET(URL_ULTIMA_ORDEN)
+    Call<Orden> obtenerUltimaOrden();
+
+    @GET(URL_ORDENES_DETALLES)
+    Call<List<OrdenDetalles>> obtenerOrdenDetalles(
+            @Query("idOrden") String idOrden
+    );
+
+    @POST(URL_ORDENES_DETALLES)
+    Call<Void> agregarOrdenDetalles(
+            @Body Orden orden
+    );
+
+    @PUT(URL_ORDENES_DETALLES)
+    Call<Void> editarOrdenDetalles(
+            @Body Orden orden
+    );
+
+    @DELETE(URL_ORDENES_DETALLES)
+    Call<Void> eliminarOrdenDetalles(
+            @Query("idOrden") String idOrden
+    );
+
 }

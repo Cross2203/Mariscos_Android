@@ -1,54 +1,75 @@
 package com.example.loginrest;
 
 public class Orden {
-    String idOrden;
+    String id_orden;
 
-    String idCliente;
+    String id_cliente;
 
-    String cantidad;
+    String id_estado;
 
-    String alimento;
+    String fecha;
 
-    String precio;
+    String direccion_entrega;
+
+    String total;
+
+    String estado;
 
 
-    public String getIdOrden() {
-        return idOrden;
+    public String getId_orden() {
+        return id_orden;
     }
 
-    public void setIdOrden(String idOrden) {
-        this.idOrden = idOrden;
+    public void setId_orden(String id_orden) {
+        this.id_orden = id_orden;
     }
 
-    public String getIdCliente() {
-        return idCliente;
+    public String getId_cliente() {
+        return id_cliente;
     }
 
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+    public void setId_cliente(String id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public String getCantidad() {
-        return cantidad;
+
+    public String getFecha() {
+        return fecha;
     }
 
-    public void setCantidad(String cantidad) {
-        this.cantidad = cantidad;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
-    public String getAlimento() {
-        return alimento;
+    public String getDireccion_entrega() {
+        return direccion_entrega;
     }
 
-    public void setAlimento(String alimento) {
-        this.alimento = alimento;
+    public void setDireccion_entrega(String direccion_entrega) {
+        this.direccion_entrega = direccion_entrega;
     }
 
-    public String getPrecio() {
-        return precio;
+    public String getTotal() {
+        return total;
     }
 
-    public void setPrecio(String precio) {
-        this.precio = precio;
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
+    public String getId_estado() {
+        return id_estado;
+    }
+
+    public void setId_estado(String id_estado) {
+        this.id_estado = id_estado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

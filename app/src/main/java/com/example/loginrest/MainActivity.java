@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_login;
 
 
+
+    Retrofit retrofit;
+
     private APIRest api;
 
     @Override
@@ -49,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btnlogin);
         et_Password = findViewById(R.id.etpassword);
         et_Usuario = findViewById(R.id.etusuario);
+        retrofit = new AdaptadorRetrofit().getAdaptador();
 
-
+        api = retrofit.create(APIRest.class);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                agregarOrden(api);
                 Intent intent = new Intent(MainActivity.this, FoodActivity.class);
                 startActivity(intent);
 
@@ -64,23 +67,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    public void getUsuarios (APIRest api){
-        Call<List<Usuario>> call = api.obtenerUsuarios();
+    public void agregarOrden (final APIRest api){
+        Orden orden = new Orden();
+        orden.setId_cliente("1");
+        orden.setDireccion_entrega("Valle de los Chillos");
+        orden.setId_estado("1");
+        orden.setEstado("pendiente");
+        orden.setFecha("2022-05-05");
+        orden.setTotal("0.00");
 
-        call.enqueue(new Callback<List<Usuario>>() {
+        Call<Void> call = api.agregarOrden(orden);
+        call.enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                listaUsuarios = new ArrayList<Usuario>(response.body());
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                switch (response.code()){
+                    case 400:
+                        Toast.makeText(MainActivity.this, "Faltan campos", Toast.LENGTH_LONG).show();
+                        System.out.println("No vale");
+                        break;
+
+                    case 200:
+                        Toast.makeText(MainActivity.this, "Se inserto correctamente", Toast.LENGTH_LONG).show();
+                        System.out.println("Esto es un juego");
+
+                }
             }
 
             @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(MainActivity.this, "No se pudo conectar", Toast.LENGTH_LONG).show();
                 Log.e("TAG", "Error" + t);
             }
         });
+
     }
 
 }

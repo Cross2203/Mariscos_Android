@@ -10,7 +10,7 @@ public class AdaptadorRetrofit {
     }
 
     public Retrofit getAdaptador() {
-        String URL = "http://127.0.0.1:8000/";
+        String URL = "https://heroku-test-9fab.onrender.com/";
         //String URL = "http://localhost/apiretrofit/";
         retrofit = new Retrofit.Builder()
                 .baseUrl(URL)

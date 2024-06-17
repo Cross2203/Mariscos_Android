@@ -3,9 +3,9 @@ package com.example.loginrest;
 public class Comida {
     private String nombre;
 
-    private String idComida;
+    private String id_alimento;
 
-    private String detalles;
+    private String descripcion;
 
     private Float precio;
 
@@ -18,14 +18,6 @@ public class Comida {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDetalles() {
-        return detalles;
-    }
-
-    public void setDetalles(String detalles) {
-        this.detalles = detalles;
     }
 
     public Float getPrecio() {
@@ -44,11 +36,19 @@ public class Comida {
         this.tipo = tipo;
     }
 
-    public String getIdComida() {
-        return idComida;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setIdComida(String idComida) {
-        this.idComida = idComida;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getId_alimento() {
+        return id_alimento;
+    }
+
+    public void setId_alimento(String id_alimento) {
+        this.id_alimento = id_alimento;
     }
 }

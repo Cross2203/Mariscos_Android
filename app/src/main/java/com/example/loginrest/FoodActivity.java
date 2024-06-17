@@ -37,6 +37,7 @@ public class FoodActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
